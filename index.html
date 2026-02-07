@@ -78,7 +78,7 @@
     <h1>My Love ❤️</h1>
     <p>
       Here are some roses for you..<br />
-      But i also promise to give you rozz,<br />
+      But I also promise to give you rozz,<br />
       every smile, every effort,<br />
       every bit of love I have.<br /><br />
       You mean everything to me bubu.
@@ -87,12 +87,9 @@
   </div>
 
 <script>
-  const rosesCount = 70; // increase to fill the screen better
-  const screenWidth = window.innerWidth;
-  
-  // Your realistic rose image URL - replace with your own or this example one:
-  const roseImageSrc = "https://i.ibb.co/RB7gzpq/realistic-rose.png";  
-  // <-- This is a transparent rose PNG image hosted here for demo  
+  const rosesCount = 70;
+  // Transparent PNG rose image URL (valid and publicly hosted)
+  const roseImageSrc = "https://raw.githubusercontent.com/mdn/web-demos/main/css-examples/floating-particles/red-rose.png";
 
   for (let i = 0; i < rosesCount; i++) {
     const rose = document.createElement("img");
@@ -100,25 +97,24 @@
     rose.alt = "Red rose";
     rose.classList.add("rose-image");
     
-    // Random horizontal position across screen (5% to 95% width)
+    // Random horizontal position within viewport width (5% to 95%)
     rose.style.left = `${5 + Math.random() * 90}vw`;
-    
-    // Random size scaling for natural effect (0.3x to 0.7x)
+
+    // Random scaling for variety (0.3x to 0.7x)
     const scale = 0.3 + Math.random() * 0.4;
     rose.style.setProperty('--scale', scale);
-    rose.style.width = `${scale * 120}px`; // Base width: 120px approx
-    
-    // Random animation duration (8s to 15s)
+    rose.style.width = `${scale * 120}px`; // base approx width 120 px
+
+    // Random animation duration from 8s to 15s
     const duration = 8 + Math.random() * 7;
     rose.style.animationDuration = `${duration}s`;
-    
-    // Random animation delay to stagger starts (0s to duration)
+
+    // Random animation delay to stagger animations
     rose.style.animationDelay = `${Math.random() * duration}s`;
-    
+
     document.body.appendChild(rose);
   }
 </script>
 
 </body>
 </html>
-
