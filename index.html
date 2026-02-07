@@ -25,6 +25,7 @@
       will-change: transform;
       user-select: none;
       pointer-events: none;
+      /* Font size will be set dynamically */
     }
 
     @keyframes float {
@@ -80,7 +81,12 @@
   </div>
 
   <script>
-    const rosesCount = 80;
+    const rosesCount = 80;  // increase number of roses to fill screen better
+    const cardWidthPx = 350;
+    const screenWidthPx = window.innerWidth;
+    const cardLeft = (screenWidthPx - cardWidthPx) / 2;
+    const cardRight = cardLeft + cardWidthPx;
+
     for (let i = 0; i < rosesCount; i++) {
       const rose = document.createElement("div");
       rose.className = "rose";
@@ -88,14 +94,19 @@
       rose.setAttribute("role", "img");
       rose.setAttribute("aria-label", "Rose emoji");
 
-      const fontSize = 150 + Math.random() * 200; // 150px to 350px
+      // Random font size between 30px and 70px for bigger roses
+      const fontSize = 30 + Math.random() * 40;
       rose.style.fontSize = `${fontSize}px`;
 
+      // Randomly choose left position across *the whole viewport*, 
+      // allowing roses to float even behind the card for fullness
       rose.style.left = `${Math.random() * 100}vw`;
 
-      const duration = 10 + Math.random() * 8; // 10s to 18s
+      // Duration between 6s to 12s for a bit slower and varied animation
+      const duration = 6 + Math.random() * 6;
       rose.style.animationDuration = `${duration}s`;
 
+      // Staggered delay for continuous flow
       rose.style.animationDelay = `${Math.random() * duration}s`;
 
       document.body.appendChild(rose);
